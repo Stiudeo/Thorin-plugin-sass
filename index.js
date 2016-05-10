@@ -30,11 +30,11 @@ module.exports = function(thorin, opt, pluginName) {
   // step one, for each file, figure out the full path.
   let fileList = [],  // curated file list.
     isStarted = false;
-  const lessObj = {};
+  const sassObj = {};
   const logger = thorin.logger(opt.logger);
 
   /* Manually add a new input/output file to process */
-  lessObj.add = function AddFiles(item, _opt, _done) {
+  sassObj.add = function AddFiles(item, _opt, _done) {
     if(typeof item !== 'object' || !item || !item.input || !item.output) {
       logger.warn('add() requires an object with {input, output}', item);
       return this;
@@ -61,16 +61,16 @@ module.exports = function(thorin, opt, pluginName) {
     } else {
       fileList.push(item);
     }
-    return lessObj;
+    return sassObj;
   }
 
 
   for(let i=0; i < opt.files.length; i++) {
     let item = opt.files[i];
-    lessObj.add(item);
+    sassObj.add(item);
   }
 
-  lessObj.run = function DoRun(done) {
+  sassObj.run = function DoRun(done) {
     let calls = [];
     fileList.forEach((item) => {
       calls.push((done) => {
@@ -89,7 +89,20 @@ module.exports = function(thorin, opt, pluginName) {
       done(e);
     });
   };
+  /*
+   * Ensure that we have app/styles folder.
+   * */
+  sassObj.setup = function DoSetup(done) {
+    const SETUP_DIRECTORIES = ['app/styles'];
+    for(let i=0; i < SETUP_DIRECTORIES.length; i++) {
+      try {
+        thorin.util.fs.ensureDirSync(path.normalize(thorin.root + '/' + SETUP_DIRECTORIES[i]));
+      } catch(e) {}
+    }
+    done();
+  }
+  
 
-  return lessObj;
+  return sassObj;
 };
 module.exports.publicName = 'sass';

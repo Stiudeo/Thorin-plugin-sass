@@ -1,7 +1,7 @@
 {
   "name": "thorin-plugin-sass",
   "author": "Stiudeo",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "dependencies": {
     "node-sass": "^3.4.2"
   },
