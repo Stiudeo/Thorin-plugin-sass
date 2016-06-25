@@ -1,7 +1,7 @@
 {
   "name": "thorin-plugin-sass",
   "author": "Stiudeo",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "dependencies": {
     "node-sass": "^3.4.2"
   },
@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Stiudeo/Thorin-plugin-sass"
+    "url": "https://github.com/Thorinjs/Thorin-plugin-sass"
   },
   "homepage": "http://thorinjs.com",
   "bugs": {
-    "url": "https://github.com/Stiudeo/Thorin-plugin-sass/issues"
+    "url": "https://github.com/Thorinjs/Thorin-plugin-sass/issues"
   }
 }
