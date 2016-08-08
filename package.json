@@ -1,9 +1,9 @@
 {
   "name": "thorin-plugin-sass",
   "author": "Stiudeo",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "dependencies": {
-    "node-sass": "^3.4.2"
+    "node-sass": "3.4.2"
   },
   "description": "Thorin.js sass plugin",
   "main": "index.js",
